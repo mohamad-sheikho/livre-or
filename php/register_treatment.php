@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; //liaison à la base de données 
+require 'config.php'; //on se relie la base de données 
 
 //On vérifie que les champs ne sont pas vides
 if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['confirm'])) {
@@ -21,7 +21,7 @@ if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['conf
             $req->execute(array(':login' => $login, ':password' => $password));
             
 
-            header('Location: ../index.php?login_err=success');
+            header('Location: login.php?login_err=success');
             //On créer des variables pour faciliter le traitement et la mise en forme des erreurs récupérées
         } else {
             header('Location:register.php?error_register=password');

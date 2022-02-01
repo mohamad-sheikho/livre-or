@@ -1,82 +1,26 @@
 
-
-le header de mon module connexion : 
-<header>  
-
-        <div class="accueil">
-            <a href="index.php">Accueil</a>
-
-        </div>
-        <nav>
-            <ul>
-                <li class="deroulant"><a href="#">Navigation &ensp;</a>
-                    <ul class="sous">
-                        <li><?php
-                            if (!isset($_SESSION["login"])) {
-                                echo '<div> <a id="connexionLink"  href="php/login.php">Login</a> <a id="inscriptionLink" href="php/register.php">Registration</a> </div>'; ?></li>
+!!!!! commenter le code a la fin quand j'aurais terminé 
 
 
-                        <li><?php } else {
-                                echo '<div><a href="profil.php">Your Profil</a></div>';
-
-                                if ($_SESSION["login"] == "admin") {
-                                    echo "<div><a href='php/welcome.php' style='width:100%;'>Page Admin</a></div>";
-                                }
-                            } ?>
-
-                        </li>
-                    </ul>
-            </ul>
-        </nav>
-    </header>
-
-    
+Je commence par créer la page index.php
+apres je fais les deux pages register.php et login.php
+ 
+ pour le formulaire j'ai utilisé le css de mon projet module-connexion 
 
 
 
+ config.php: fait
+ index.php: fait 
+ login.php et login_treatment: fait 
+ register.php et register_treatment: fait 
+ index_connexion: fait
+ logout.php: fait 
+ 
 
-pour la page inscription il faut creer : 
--login 
--password
--confirmation password
+ livre-or.php: 
+ commentaire.php et commentaire_treatment: fait
 
 
 
-code php module-connexion : 
-<?php
+ 
 
-include 'config.php';
-
-error_reporting(0);
-
-session_start();
-if (isset($_POST['submit'])) {
-	$login = $_POST['username'];
-	$prenom = $_POST['prenom'];
-	$nom = $_POST['nom'];
-	$password = md5($_POST['password']);
-	$cpassword = md5($_POST['cpassword']);
-
-	if ($password == $cpassword) {
-		$sql = "SELECT * FROM utilisateurs WHERE login='$login'";
-
-		$sql = " INSERT INTO `utilisateurs`( `login`, `prenom`, `nom`, `password`) VALUES ('$login','$prenom','$nom','$password')";
-		$result = mysqli_query($bdd, $sql);
-		if ($result) {
-			echo "<script>alert('Wow! User Registration Completed.')</script>";
-			$login = "";
-			$prenom = "";
-			$nom = "";
-			$_POST['password'] = "";
-			$_POST['cpassword'] = "";
-		} else {
-			echo "<script>alert('Woops! Something Wrong Went.')</script>";
-		}
-	} else {
-		echo "<script>alert('Woops! Email Already Exists.')</script>";
-	}
-} else {
-	echo "<script>alert('Password Not Matched.')</script>";
-}
-
-?>
