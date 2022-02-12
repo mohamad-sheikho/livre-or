@@ -50,6 +50,7 @@ if (isset($_SESSION['user'])) {
         }
     }
 ?>
+
 <?php
     $req = $db->query('SELECT * FROM commentaires');
 

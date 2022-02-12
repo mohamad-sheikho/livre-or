@@ -20,7 +20,7 @@ if (!empty($_POST['commentaire'])) {
     // on donne le format qui conviens a la date
     $date->format('Y-m-d H:i:s');
     // mtn on vérifie si le commentaire est au moins de  caract
-    if (strlen($commentaire) >= 5) {
+    if (strlen($commentaire) >= 2) {
         // on insert dans la base de donnée 
         $insert = $db->prepare('INSERT INTO commentaires(commentaire,id_utilisateur,date) VALUES(:commentaire,:id_utilisateur,NOW())');
         
